@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- meta tags -->
+
+    <title>ورود | login</title>
+
+    <!-- styles -->
+
+    <!-- bootstrap .css file -->
+    <link rel="stylesheet" href="../styles/bootstrap.css" />
+    <!-- bootstrap .css file -->
+
+    <!-- custom .css files -->
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/login-signup.css" />
+    <!-- custom .css files -->
+
+    <!-- styles -->
+  </head>
+
+  <body class="bg bg-login">
+    <section class="mx-3 my-5">
+      <div class="container form-login-signup bg-light">
+        <div
+          class="row border border-5 rounded justify-content-between align-items-center"
+        >
+          <div class="col-md-5 p-5">
+            <!-- login form -->
+            <form action="" id="form-login">
+              <h3 class="fw-bold my-3 text-center">فرم ورود</h3>
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="email"
+                />
+                <label for="floatingPassword"
+                  ><span>
+                    <img
+                      src="../assets/icons/at.svg"
+                      alt=""
+                      class="icon"
+                    /> </span
+                  ><span class="fs-5 fw-bold">ایمیل</span></label
+                >
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                />
+                <label for="floatingPassword"
+                  ><span>
+                    <img
+                      src="../assets/icons/shield-lock.svg"
+                      class="icon"
+                      alt=""
+                    /> </span
+                  ><span class="fs-5 fw-bold">رمز عبور</span></label
+                >
+              </div>
+
+              <!-- divs for error message or success message-->
+              <div id="invalid-field"></div>
+              <div id="success-field"></div>
+              <!-- divs for error message or success message-->
+
+              <div class="row align-items-center my-3">
+                <div class="col-md-7">
+                  <div class="form-check my-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                    />
+                    <label
+                      class="form-check-label fw-bold"
+                      for="flexCheckDefault"
+                    >
+                      مرا به خاطر بسپار
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <button
+                    class="btn btn-secondary w-100 p-3 fw-bold"
+                    type="submit"
+                    id="submit-btn"
+                  >
+                    ورود
+                  </button>
+                </div>
+              </div>
+              <br />
+              <p>
+                <a href="signup.html" class="text-muted"
+                  >اکانت ندارید؟ثبت نام کنید</a
+                >
+              </p>
+            </form>
+            <!-- login form -->
+          </div>
+          <!-- image section -->
+          <div class="col-md-5 text-center p-3">
+            <img
+              src="../assets/images/login-image.svg"
+              class="img-fluid"
+              width="400"
+              alt=""
+            />
+          </div>
+          <!-- image section -->
+        </div>
+      </div>
+    </section>
+
+    <!-- bootstrap .js file -->
+    <script src="../scripts/bootstrap.js"></script>
+    <!-- bootstrap .js file -->
+
+    <!-- custom .js file -->
+    <script src="../scripts/loginForm.js" type="module"></script>
+    <!-- custom .js file -->
+  </body>
+</html>
