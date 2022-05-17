@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- meta tags -->
+
+    <!-- styles -->
+
+    <!-- bootstrap .css file -->
+    <link rel="stylesheet" href="../styles/bootstrap.css" />
+    <!-- bootstrap .css file -->
+
+    <!-- custom .css files -->
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/login-signup.css" />
+    <!-- custom .css files -->
+
+    <!-- styles -->
+
+    <title>Signup | ثبت نام</title>
+  </head>
+
+  <body class="bg bg-signup">
+    <!-- singup section -->
+    <section class="mx-4 my-4">
+      <div
+        class="container bg-light form-login-signup border border-5 rounded"
+        id="signup-form"
+      >
+        <div class="row align-items-center justify-content-around">
+          <div class="col-md-5">
+            <h4 class="text-center fw-bold my-4">فرم ثبت نام</h4>
+            <!-- signup form -->
+            <form action="">
+              <div class="form-floating my-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="name@example.com"
+                  required
+                />
+                <label for="floatingInput" class="fw-bold"
+                  ><span
+                    ><img
+                      src="../assets/icons/at.svg"
+                      class="icon"
+                      alt="" /></span
+                  >ایمیل</label
+                >
+              </div>
+              <div class="form-floating my-3">
+                <input
+                  type="text"
+                  class="form-control text-end"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  placeholder="phoneNumber"
+                  required
+                />
+                <label for="floatingPassword" class="fw-bold"
+                  ><span
+                    ><img
+                      src="../assets/icons/telephone.svg"
+                      alt=""
+                      class="icon" /></span
+                  >شماره تماس
+                </label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control text-end"
+                  id="password"
+                  placeholder="password"
+                  required
+                />
+                <label for="floatingPassword" class="fw-bold"
+                  ><span
+                    ><img
+                      src="../assets/icons/shield-lock.svg"
+                      alt=""
+                      class="icon" /></span
+                  >رمز عبور</label
+                >
+                <div class="form-text">
+                  رمز عبور حداقل دارای 8 کاراکتر شامل عدد،حروف کوچک و بزرگ باید
+                  باشد
+                </div>
+              </div>
+              <div class="form-floating my-3">
+                <input
+                  type="password"
+                  class="form-control text-end"
+                  id="passwordVerify"
+                  name="passwordVerify"
+                  placeholder="password"
+                  required
+                />
+                <label for="floatingPassword" class="fw-bold"
+                  ><span
+                    ><img
+                      src="../assets/icons/shield-check.svg"
+                      alt=""
+                      class="icon" /></span
+                  >تایید رمز عبور</label
+                >
+              </div>
+
+              <!-- divs for error message or success message-->
+              <div id="invalid-field"></div>
+              <div id="success-field"></div>
+              <!-- divs for error message or success message-->
+
+              <div class="row my-5">
+                <div class="col-md-7">
+                  <div class="form-check pt-md-2">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="privacyCheck"
+                    />
+
+                    <label class="form-check-label" for="privacyCheck">
+                      <bdi
+                        ><a
+                          href=""
+                          data-bs-toggle="offcanvas"
+                          data-bs-target="#offcanvasBottom"
+                          aria-controls="offcanvasTop"
+                        >
+                          شرایط
+                        </a> </bdi
+                      >را مطالعه کردم و میپذیرم
+                      <div class="form-text">
+                        برای خواندن شرایط روی شرایط کلیک کنید
+                      </div>
+
+                      <div
+                        class="offcanvas offcanvas-bottom"
+                        tabindex="-1"
+                        id="offcanvasBottom"
+                        aria-labelledby="offcanvasBottomLabel"
+                      >
+                        <div class="offcanvas-header">
+                          <button
+                            type="button"
+                            class="btn-close text-reset text-end"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                          ></button>
+                          <div></div>
+                        </div>
+                        <div class="offcanvas-body">
+                          <h4 class="text-center fw-bold">
+                            شرایط و حریم خصوصی
+                          </h4>
+                          <p class="text-muted">
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها
+                            و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                            لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                            کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                            باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
+                            آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا
+                            با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای
+                            علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی
+                            ایجاد کرد، در این صورت می توان امید داشت که تمام و
+                            دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
+                            پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
+                            اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
+                            اساسا مورد استفاده قرار گیرد.
+                            <br />
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها
+                            و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                            لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                            کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                            باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
+                            آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا
+                            با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای
+                            علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی
+                            ایجاد کرد، در این صورت می توان امید داشت که تمام و
+                            دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
+                            پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
+                            اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
+                            اساسا مورد استفاده قرار گیرد.
+                            <br />
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                            صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها
+                            و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                            لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                            کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+                            باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
+                            آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا
+                            با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای
+                            علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی
+                            ایجاد کرد، در این صورت می توان امید داشت که تمام و
+                            دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
+                            پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
+                            اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
+                            اساسا مورد استفاده قرار گیرد.
+                          </p>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-5 my-4 my-md-0">
+                  <button
+                    class="btn btn-dark fw-bold w-100 fs-5 p-2"
+                    type="submit"
+                    name="signup"
+                    id="submit-btn"
+                  >
+                    ثبت نام
+                  </button>
+                </div>
+              </div>
+            </form>
+            <!-- signup form -->
+          </div>
+          <!-- image section -->
+          <div class="col-md-5">
+            <img
+              src="../assets/images/signup-image.svg"
+              alt=""
+              class="img-fluid mx-4"
+            />
+          </div>
+          <!-- image section -->
+        </div>
+      </div>
+    </section>
+
+    <!-- bootstrap .js file -->
+    <script src="../scripts/bootstrap.js"></script>
+    <!-- bootstrap .js file -->
+
+    <!-- custom .js file -->
+    <script src="../scripts/signupform.js" type="module"></script>
+    <!-- custom .js file -->
+  </body>
+</html>
