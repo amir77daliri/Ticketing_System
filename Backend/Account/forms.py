@@ -58,3 +58,58 @@ class LoginForm(AuthenticationForm):
                     if not self.user_cache.is_active:
                         self.add_error('password', 'حساب کاربری شما فعال نیست!')
         return self.cleaned_data
+
+
+class SignUpForm(UserCreationForm):
+    username = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'username', 'id': 'username', 'class': 'form-control'})
+    )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={'placeholder': 'Email', 'id': 'email', 'class': 'form-control'})
+    )
+    phone_number = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'phone_number', 'id': 'phone_number', 'class': 'form-control'})
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'password', 'id': 'password1', 'class': 'form-control'})
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'confirm-password', 'id': 'password2', 'class': 'form-control'})
+    )
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'phone_number')
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if validate_email(email):
+            return email
+        raise forms.ValidationError("ایمیل وارد شده اشتباه است.")
+
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get('phone_number')
+        if validate_phone(phone_number):
+            return phone_number
+        raise forms.ValidationError("شماره تلفن صحیح نیست!")
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("رمز عبور ها مغایرت دارند!")
+        return password2
+
+    def clean(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(email=email).exists():
+            self.add_error('email', 'کاربری با این ایمیل از قبل موجود است !')
+        else:
+            if User.objects.filter(username=username).exists():
+                self.add_error('username', 'کاربری با این نام کاربری از قبل موجود است !')
+
+        return self.cleaned_data

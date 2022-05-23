@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- meta tags -->
+
+    <title>ثبت تیکت | sign ticket</title>
+
+    <!-- styles -->
+
+    <!-- bootstrap .css file -->
+    <link rel="stylesheet" href="../styles/bootstrap.css" />
+    <!-- bootstrap .css file -->
+
+    <!-- custom .css files -->
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/sign-ticket.css" />
+    <!-- custom .css files -->
+
+    <!-- styles -->
+  </head>
+
+  <body class="bg bg-login">
+    <section class="mx-3 my-5">
+      <div class="container form-login-signup bg-light border border-5 rounded">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-md-5 p-5">
+            <!-- sign ticket form -->
+            <form action="">
+              <h3 class="fw-bold my-3 text-center">ثبت تیکت</h3>
+              <br />
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  placeholder="text"
+                />
+                <label for="floatingPassword"
+                  ><span>
+                    <img
+                      src="../assets/icons/tag.svg"
+                      alt=""
+                      class="icon"
+                    /> </span
+                  ><span class="fs-5 fw-bold">عنوان</span></label
+                >
+              </div>
+
+              <div class="form-floating">
+                <textarea
+                  class="form-control"
+                  placeholder="Leave a comment here"
+                  id="message"
+                  style="height: 250px"
+                ></textarea>
+                <label for="message"
+                  ><span>
+                    <img
+                      src="../assets/icons/chat-text.svg"
+                      alt=""
+                      class="icon"
+                    /> </span
+                  ><span class="fs-5 fw-bold">متن تیکت</span></label
+                >
+              </div>
+
+              <!-- divs for error message or success message-->
+              <div id="invalid-field"></div>
+              <div id="success-field"></div>
+              <!-- divs for error message or success message-->
+
+              <!-- submit button -->
+              <div class="row align-items-center my-3">
+                <div class="col">
+                  <button
+                    class="btn btn-secondary w-100 p-3 fw-bold"
+                    type="submit"
+                    id="submit-btn"
+                  >
+                    ارسال
+                  </button>
+                </div>
+              </div>
+              <!-- submit button -->
+
+              <br />
+            </form>
+            <!-- sign ticket form -->
+          </div>
+
+          <!-- image section -->
+          <div class="col-md-6 text-center p-3">
+            <img
+              src="../assets/images/send-ticket.svg"
+              class="img-fluid"
+              width="400"
+              alt=""
+            />
+          </div>
+          <!-- image section -->
+        </div>
+      </div>
+    </section>
+
+    <!-- bootstrap .js file -->
+    <script src="../scripts/bootstrap.js"></script>
+    <!-- bootstrap .js file -->
+
+    <!-- custom .js file -->
+    <script src="../scripts/sign-ticket.js" type="module"></script>
+    <!-- custom .js file -->
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{% autoescape off %}
+        <pre>
+        سلام {{ user.username }}
+        برای فعالسازی حساب خود در سایت ایران تیکت لطفا بر روی لینک زیر کلیک کنید.
+        </pre>
+http://{{ domain }}{% url 'account:activate' uidb64=uid token=token  %}
+{% endautoescape %}

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- meta tags -->
+
+    <!-- styles -->
+
+    <!-- bootstrap .css file -->
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}" />
+    <!-- bootstrap .css file -->
+
+    <!-- custom .css files -->
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+    <!-- custom .css files -->
+
+    <!-- styles -->
+
+    <title>IranTicket | ایران تیکت</title>
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <!-- responsive header button toggler -->
+          <button
+            type="button"
+            class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- responsive header button toggler -->
+
+          <!-- header logo -->
+          <a href="./index.html" class="navbar-brand"
+            ><img src="{% static 'assets/icons/logo.png' %}" alt="" height="100px"
+          /></a>
+          <!-- header logo -->
+
+          <!-- header collapsable part -->
+          <div
+            class="collapse navbar-collapse justify-content-around"
+            id="navbarCollapse"
+          >
+            <!-- header menu -->
+            <div class="navbar-nav">
+              <a href="#" class="nav-item nav-link active"
+                ><span><img src="{% static 'assets/icons/house.svg' %}" alt="" /></span
+                ><span> خانه </span></a
+              >
+              <a href="#" class="nav-item nav-link active mx-md-5 mx-0"
+                ><span><img src="{% static 'assets/icons/send.svg' %}" alt="" /></span
+                ><span> ثبت تیکت </span></a
+              >
+              <a href="#" class="nav-item nav-link active"
+                ><span><img src="{% static 'assets/icons/telephone.svg' %}" alt="" /></span
+                ><span> تماس با ما </span></a
+              >
+            </div>
+            <!-- header menu -->
+
+            <!-- header serach bar -->
+            <form class="d-flex">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="پیگیری تیکت..."
+                />
+                <button type="button" class="btn btn-secondary">
+                  <span
+                    ><img
+                      src="{% static 'assets/icons/search.png' %}"
+                      alt=""
+                      width="20px"
+                    />
+                  </span>
+                </button>
+              </div>
+            </form>
+            <!-- header serach bar -->
+
+            <!-- header login/signup button -->
+            <div class="navbar-nav mt-3 mt-md-0">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'account:logout' %}" class="btn btn-outline-secondary rounded-pill p-3">خروج</a>
+                {% else %}
+                     <a href="{% url 'account:login' %}" class="btn btn-outline-secondary rounded-pill p-3">ورود | ثبت نام</a>
+                {% endif %}
+            </div>
+            <!-- header collapsable part -->
+          </div>
+          <!-- header collapsable part -->
+        </div>
+      </nav>
+    </header>
+    <!-- header -->
+
+    <!-- hero section -->
+    <section>
+      <div class="container mt-5">
+        <div class="row align-items-center justify-content-evenly">
+          <!-- description part -->
+          <div class="col-sm-6 mt-5 mt-lg-0">
+            <!-- title -->
+            <h4 class="fw-bold">
+              <span class="text-primary">ایران </span
+              ><span class="text-secondary">تیکت</span>
+            </h4>
+            <!-- title -->
+
+            <!-- description -->
+            <p class="lead text-secondary">
+              ایران تیکت وبسایتی پیشرو در زمینه خدمات تیکتینگ و پشتیبانی برای
+              فارسی زبانان سرا تا سر جهان!
+              <br />
+              با ما تجربه ای جدید در زمینه تیکتینگ را تجربه کنید :)
+            </p>
+            <a class="btn btn-primary" href="">ثبت تیکت</a>
+            <a class="btn btn-outline-secondary ms-4" href="#plans"
+              >مشاهده پلن ها</a
+            >
+            <!-- description -->
+          </div>
+          <!-- description part -->
+
+          <!-- image part -->
+          <div class="col-sm-4 mt-md-0 mt-4">
+            <img
+              src="{% static 'assets/images/hero-sec-image.svg' %}"
+              alt=""
+              class="img-fluid mx-4 mx-md-0"
+            />
+          </div>
+          <!-- image part -->
+        </div>
+      </div>
+    </section>
+    <!-- hero section -->
+
+    <br />
+    <br />
+
+    <!-- wave part -->
+    <div style="height: 150px; overflow: hidden">
+      <svg
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+        style="height: 100%; width: 100%"
+      >
+        <path
+          d="M-16.70,27.93 C84.87,209.50 263.20,-8.57 450.56,57.53 L646.39,157.20 L0.00,150.00 Z"
+          style="stroke: none; fill: #f8f9fa"
+        ></path>
+      </svg>
+    </div>
+    <!-- wave part -->
+
+    <!-- features section -->
+    <section class="bg-light">
+      <div class="container mt-lg-0">
+        <div class="row align-items-center">
+          <!-- description -->
+          <div class="col-md-5">
+            <p class="fw-bold lead my-3">ایران تیکت دیگه چه ویژگی هایی داره؟</p>
+            <p class="lead text-secondary">
+              ایران تیگت با داشتن سایقه ای ده ساله در زمینه پشتیبانی و تیکتینگ
+              از سابقه داران در این زمینه است ،علاوه بر سابقه ، همواره با شرکت
+              های بزرگی همکاری داشته.
+              <br />
+              در ایران تیکت پشتیبانی 24 ساعته است و هرنوع درخواست و تیکتی در
+              کمتر از 5 دقیقه بررسی خواهد شد
+            </p>
+          </div>
+          <!-- description -->
+
+          <!-- cards part -->
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md-6">
+                <!--card -->
+                <div class="card text-center shadow mt-3">
+                  <div class="card-body">
+                    <span class=""
+                      ><img
+                        src="{% static 'assets/images/trust.png' %}"
+                        class="icon-feature"
+                        alt=""
+                    /></span>
+                    <p class="lead card-title fw-bold my-3">مورد اعتماد</p>
+                    <p class="card-text text-muted">
+                      مورد اعتماد شرکت های بزرگ
+                    </p>
+                  </div>
+                </div>
+                <!--card -->
+
+                <!--card -->
+                <div class="card text-center shadow mt-4">
+                  <div class="card-body">
+                    <span class=""
+                      ><img
+                        src="{% static 'assets/images/fast-time.png' %}"
+                        class="icon-feature"
+                        alt=""
+                    /></span>
+                    <p class="lead card-title fw-bold my-3">پاسخگویی سریع</p>
+                    <p class="card-text text-muted">
+                      پاسخگویی به شما در کمتر از 5 دقیقه
+                    </p>
+                  </div>
+                </div>
+                <!--card -->
+              </div>
+
+              <div class="col-md-6">
+                <!--card -->
+                <div class="card text-center shadow mt-5">
+                  <div class="card-body">
+                    <span class=""
+                      ><img
+                        src="{% static 'assets/images/stamp.png' %}"
+                        class="icon-feature"
+                        alt=""
+                    /></span>
+                    <p class="lead card-title fw-bold my-3">سابقه بالا</p>
+                    <p class="card-text text-muted">بیش از 10 سال سابقه</p>
+                  </div>
+                </div>
+                <!--card -->
+
+                <!--card -->
+                <div class="card text-center shadow mt-4">
+                  <div class="card-body">
+                    <span class=""
+                      ><img
+                        src="{% static 'assets/images/customer-service.png' %}"
+                        class="icon-feature"
+                        alt=""
+                    /></span>
+                    <p class="lead card-title fw-bold my-3">پشتیبانی</p>
+                    <p class="card-text text-muted">پشتیبانی 24 ساعته</p>
+                  </div>
+                </div>
+                <!--card -->
+              </div>
+            </div>
+          </div>
+          <!-- cards part -->
+        </div>
+      </div>
+    </section>
+    <!-- features section -->
+
+    <!-- wave part -->
+    <div style="height: 150px; overflow: hidden">
+      <svg
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+        style="height: 100%; width: 100%"
+      >
+        <path
+          d="M0.00,49.99 C150.00,150.00 271.49,-49.99 500.00,49.99 L500.00,0.00 L0.00,0.00 Z"
+          style="stroke: none; fill: #f8f9fa"
+        ></path>
+      </svg>
+    </div>
+    <!-- wave part -->
+
+    <!-- plans section -->
+    <section id="plans">
+      <br />
+      <div class="container">
+        <!-- title -->
+        <div class="row text-center mb-5">
+          <h3 class="fw-bold">
+            <span
+              ><img src="{% static 'assets/icons/building.svg' %}" alt="" class="icon"
+            /></span>
+            <bdi>پلن های خدماتی شرکتی و سازمانی</bdi>
+          </h3>
+        </div>
+        <!-- title -->
+
+        <!-- plans -->
+        <div class="row">
+          <!-- plan -->
+          <div class="col-md-3 col-sm-6">
+            <div class="pricingTable">
+              <div class="pricingTable-header">
+                <div class="price-value">
+                  <span>000 100</span><span> تومان </span
+                  ><span class="month">ماهانه</span>
+                </div>
+              </div>
+              <h3 class="heading">پایه</h3>
+              <div class="pricing-content">
+                <ul>
+                  <li><b>1</b> خط تلفن مخصوص تماس</li>
+                  <li><b>1000</b> پیامک هدیه</li>
+                  <li><b>100GB</b> ترافیک ماهانه</li>
+                  <li><b>امکان نداشتن</b> ارسال پیام صوتی</li>
+                </ul>
+              </div>
+              <div class="pricingTable-signup">
+                <a href="#">برای ثبت تماس بگیرید</a>
+              </div>
+            </div>
+          </div>
+          <!-- plan -->
+
+          <!-- plan -->
+          <div class="col-md-3 col-sm-6">
+            <div class="pricingTable green">
+              <div class="pricingTable-header">
+                <div class="price-value">
+                  <span>000 200</span><span> تومان </span
+                  ><span class="month">ماهانه</span>
+                </div>
+              </div>
+              <h3 class="heading">معمولی</h3>
+              <div class="pricing-content">
+                <ul>
+                  <li><b>2</b> خط تلفن مخصوص تماس</li>
+                  <li><b>2000</b> پیامک هدیه</li>
+                  <li><b>200GB</b> ترافیک ماهانه</li>
+                  <li><b>امکان نداشتن</b> ارسال پیام صوتی</li>
+                </ul>
+              </div>
+              <div class="pricingTable-signup">
+                <a href="#">برای ثبت تماس بگیرید</a>
+              </div>
+            </div>
+          </div>
+          <!-- plan -->
+
+          <!-- plan -->
+          <div class="col-md-3 col-sm-6">
+            <div class="pricingTable blue">
+              <div class="pricingTable-header">
+                <div class="price-value">
+                  <span>000 300</span><span> تومان </span
+                  ><span class="month">ماهانه</span>
+                </div>
+              </div>
+              <h3 class="heading">استاندارد</h3>
+              <div class="pricing-content">
+                <ul>
+                  <li><b>3</b> خط تلفن مخصوص تماس</li>
+                  <li><b>3000</b> پیامک هدیه</li>
+                  <li><b>300GB</b> ترافیک ماهانه</li>
+                  <li><b>امکان داشتن</b> ارسال پیام صوتی</li>
+                </ul>
+              </div>
+              <div class="pricingTable-signup">
+                <a href="#">برای ثبت تماس بگیرید</a>
+              </div>
+            </div>
+          </div>
+          <!-- plan -->
+
+          <!-- plan -->
+          <div class="col-md-3 col-sm-6">
+            <div class="pricingTable red">
+              <div class="pricingTable-header">
+                <div class="price-value">
+                  <span>000 500</span><span> تومان </span
+                  ><span class="month">ماهانه</span>
+                </div>
+              </div>
+              <h3 class="heading">حرفه ای</h3>
+              <div class="pricing-content">
+                <ul>
+                  <li><b>5</b> خط تلفن مخصوص تماس</li>
+                  <li><b>5000</b> پیامک هدیه</li>
+                  <li><b>500GB</b> ترافیک ماهانه</li>
+                  <li><b>امکان داشتن</b> ارسال پیام صوتی</li>
+                </ul>
+              </div>
+              <div class="pricingTable-signup">
+                <a href="#">برای ثبت تماس بگیرید</a>
+              </div>
+            </div>
+          </div>
+          <!-- plan -->
+        </div>
+        <!-- plans -->
+      </div>
+    </section>
+    <!-- plans section -->
+
+    <br />
+    <br />
+    <br />
+
+    <!-- FAQ section -->
+    <section>
+      <div class="container my-5">
+        <!-- title -->
+        <div class="row text-center">
+          <h3 class="fw-bold">
+            <span
+              ><img
+                src="{% static 'assets/icons/question-circle.svg' %}"
+                alt=""
+                class="icon"
+            /></span>
+            <bdi>سوالات متداول</bdi>
+          </h3>
+        </div>
+        <!-- title -->
+
+        <!-- items -->
+        <div class="row my-4">
+          <div class="accordion" id="accordionExample">
+            <!-- item -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button fw-bold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  پروسه ثبت تیکت چگونه است؟
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body text-muted">
+                  کافیست وارد صفحه ثبت تیکت شوید و فرم ثبت تیکت را پرکرده و
+                  ارسال کنید
+                </div>
+              </div>
+            </div>
+            <!-- item -->
+
+            <!-- item -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button collapsed fw-bold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  چگونه تیکت خود را پیگیری کنیم؟
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body text-muted">
+                  میتوانید از قسمت پیگیری تیکت ، شماره پیگیری تیکت را وارد کرده
+                  و وضعیت تیکت را مشاهده کنید ، همچنیین میتوانید از طریق پروفایل
+                  خود نیز وضعیت تیکت های ارسالی خود را ببینید
+                </div>
+              </div>
+            </div>
+            <!-- item -->
+
+            <!-- item -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button collapsed fw-bold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  شماره پیگیری تیکت را فرموش کرده ام و نمیتوانم پیدا کنم
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body text-muted">
+                  میتوانید از قسمت پروفایل ، تمامی تیکت ها خود را مشاهده کنید
+                </div>
+              </div>
+            </div>
+            <!-- item -->
+
+            <!-- item -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button
+                  class="accordion-button collapsed fw-bold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour"
+                  aria-expanded="false"
+                  aria-controls="collapseFour"
+                >
+                  هیچ کدام از پلن های قابل ارائه مناسب شرکت نبود و نیازمند پنل
+                  خاص هستیم
+                </button>
+              </h2>
+              <div
+                id="collapseFour"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingFour"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body text-muted">
+                  در صورتی که پلن خاصی مدنظرتان است و پلن های سایت پاسخ گوی شما
+                  نیست ، کافیست با بخش پشتیبانی تماس بگیرید
+                </div>
+              </div>
+            </div>
+            <!-- item -->
+          </div>
+        </div>
+        <!-- items -->
+      </div>
+    </section>
+    <!-- FAQ section -->
+
+    <!--wave part -->
+    <div style="height: 150px; overflow: hidden">
+      <svg
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+        style="height: 100%; width: 100%"
+      >
+        <path
+          d="M-16.70,27.93 C84.87,209.50 263.20,-8.57 450.56,57.53 L646.39,157.20 L0.00,150.00 Z"
+          style="stroke: none; fill: #212529"
+        ></path>
+      </svg>
+    </div>
+    <!--wave part -->
+
+    <!-- footer -->
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <!-- footer social link and title -->
+          <div class="col-md-4">
+            <h3 class="fw-bold">ایران تیکت</h3>
+            <p>ما را در شبکه های اجتماعی دنبال کنید</p>
+            <a href=""
+              ><img src="{% static 'assets/icons/instagram.png' %}" class="icon" alt=""
+            /></a>
+            <a href=""
+              ><img src="{% static 'assets/icons/linkedin.png' %}" class="icon" alt=""
+            /></a>
+            <a href=""
+              ><img src="{% static 'assets/icons/telegram.png' %}" class="icon" alt=""
+            /></a>
+          </div>
+          <!-- footer social link and title -->
+
+          <!-- footer services & links -->
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-4 mt-5 mt-sm-0">
+                <h6 class="fw-bold">خدمات</h6>
+                <hr />
+                <ul class="list-unstyled">
+                  <li><a href="">ثبت تیکت</a></li>
+                  <li class="my-3"><a href="">پیگیری تیکت</a></li>
+                  <li><a href="">ارتباط با واحد فنی</a></li>
+                </ul>
+              </div>
+              <div class="col-md-4 mt-5 mt-sm-0">
+                <h6 class="fw-bold">راه ارتباطی و آدرس</h6>
+                <hr />
+                <ul class="list-unstyled">
+                  <li>
+                    <span>تلفن:</span> <span dir="ltr">021-12345678</span>
+                  </li>
+                  <li class="my-3">
+                    <span>آدرس:</span>
+                    <span>تهران ، لویزان ، ساختمان ایران تیکت</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- footer services & links -->
+
+          <!-- footer logo -->
+          <div class="col-md-2">
+            <img src="{% static 'assets/icons/logo.png' %}" alt="" width="100%" />
+          </div>
+          <!-- footer logo -->
+        </div>
+      </div>
+    </footer>
+    <!-- footer -->
+
+    <!-- bootsrap .js file -->
+    <script src="{% static 'scripts/bootstrap.js' %}"></script>
+    <!-- bootsrap .js file -->
+  </body>
+</html>

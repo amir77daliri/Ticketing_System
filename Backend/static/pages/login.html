@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="fa" dir="rtl">
   <head>
     <!-- meta tags -->
@@ -13,12 +12,12 @@
     <!-- styles -->
 
     <!-- bootstrap .css file -->
-    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}" />
+    <link rel="stylesheet" href="../styles/bootstrap.css" />
     <!-- bootstrap .css file -->
 
     <!-- custom .css files -->
-    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}" />
-    <link rel="stylesheet" href="{% static 'styles/login-signup.css' %}" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/login-signup.css" />
     <!-- custom .css files -->
 
     <!-- styles -->
@@ -32,50 +31,41 @@
         >
           <div class="col-md-5 p-5">
             <!-- login form -->
-            <form method="post" id="form-login">
-              {% csrf_token %}
+            <form action="" id="form-login">
               <h3 class="fw-bold my-3 text-center">فرم ورود</h3>
               <div class="form-floating mb-3">
-                <!-- <input
+                <input
                   type="email"
                   class="form-control"
                   id="email"
                   placeholder="email"
-                /> -->
-                {{ form.username }}
+                />
                 <label for="floatingPassword"
                   ><span>
                     <img
-                      src="{% static 'assets/icons/at.svg' %}"
+                      src="../assets/icons/at.svg"
                       alt=""
                       class="icon"
                     /> </span
-                  ><span class="fs-5 fw-bold">نام کاربری یا ایمیل</span></label>
-                  {% for error in form.username.errors %}
-                      <p class="my-2 text-danger">{{ error }}</p>
-                  {% endfor %}
+                  ><span class="fs-5 fw-bold">ایمیل</span></label
+                >
               </div>
               <div class="form-floating">
-                <!-- <input
+                <input
                   type="password"
                   class="form-control"
                   id="password"
                   placeholder="Password"
-                /> -->
-                  {{ form.password }}
+                />
                 <label for="floatingPassword"
                   ><span>
                     <img
-                      src="{% static 'assets/icons/shield-lock.svg' %}"
+                      src="../assets/icons/shield-lock.svg"
                       class="icon"
                       alt=""
                     /> </span
                   ><span class="fs-5 fw-bold">رمز عبور</span></label
                 >
-                    {% for error in form.password.errors %}
-                        <br>
-                        <p class="text-danger" style="margin-bottom: 6px">{{ error }}</p>
-                    {% endfor %}
               </div>
 
               <!-- divs for error message or success message-->
@@ -85,11 +75,20 @@
 
               <div class="row align-items-center my-3">
                 <div class="col-md-7">
-                    <a href="#" style="text-decoration: none">
-                        <div class="form-check my-3">
-                          فراموشی رمز عبور
-                        </div>
-                    </a>
+                  <div class="form-check my-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                    />
+                    <label
+                      class="form-check-label fw-bold"
+                      for="flexCheckDefault"
+                    >
+                      مرا به خاطر بسپار
+                    </label>
+                  </div>
                 </div>
                 <div class="col-md-5">
                   <button
@@ -103,7 +102,7 @@
               </div>
               <br />
               <p>
-                <a href="{% url 'account:register' %}" class="text-muted"
+                <a href="signup.html" class="text-muted"
                   >اکانت ندارید؟ثبت نام کنید</a
                 >
               </p>
@@ -113,7 +112,7 @@
           <!-- image section -->
           <div class="col-md-5 text-center p-3">
             <img
-              src="{% static 'assets/images/login-image.svg' %}"
+              src="../assets/images/login-image.svg"
               class="img-fluid"
               width="400"
               alt=""
@@ -125,11 +124,11 @@
     </section>
 
     <!-- bootstrap .js file -->
-    <script src="{% static 'scripts/bootstrap.js' %}"></script>
+    <script src="../scripts/bootstrap.js"></script>
     <!-- bootstrap .js file -->
 
     <!-- custom .js file -->
-{#    <script src="{% static 'scripts/loginForm.js' %}" type="module"></script>#}
+    <script src="../scripts/loginForm.js" type="module"></script>
     <!-- custom .js file -->
   </body>
 </html>
