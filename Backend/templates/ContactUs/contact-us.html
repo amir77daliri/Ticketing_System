@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- meta tags -->
+
+    <title>ارتباط با ما | contact us</title>
+
+    <!-- styles -->
+
+    <!-- bootstrap .css file -->
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}" />
+    <!-- bootstrap .css file -->
+
+    <!-- custom .css files -->
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/contact-us.css' %}" />
+    <!-- custom .css files -->
+
+    <!-- styles -->
+      <style>
+          .direct{
+              direction: rtl;
+          }
+      </style>
+  </head>
+
+  <body class="bg bg-login">
+    <section class="mx-3 my-5">
+      <div class="container form-login-signup bg-light border border-5 rounded">
+        <!-- contact ways -->
+        <div class="row justify-content-center mt-4">
+          <div class="col-md-2 text-center">
+            <p>
+              <span><img src="{% static 'assets/icons/envelope.svg' %}" alt="" /></span
+              ><span> iranticket@info </span>
+            </p>
+          </div>
+          <div class="col-md-2 text-center">
+            <p>
+              <span><img src="{% static 'assets/icons/telephone.svg' %}" alt="" /></span
+              ><span> 021-123-4567 </span>
+            </p>
+          </div>
+          <div class="col-md-2 text-center">
+            <p>
+              <span><img src="{% static 'assets/icons/insta-black.svg' %}" alt="" /></span
+              ><span> iranTicket </span>
+            </p>
+          </div>
+          <div class="col-md-2 text-center">
+            <p>
+              <span><img src="{% static 'assets/icons/whatsapp.svg' %}" alt="" /></span
+              ><span> 0912-345-7890 </span>
+            </p>
+          </div>
+        </div>
+        <!-- contact ways -->
+
+        <div class="row justify-content-between align-items-center">
+          <div class="col-md-5 p-5">
+            <!-- contact form -->
+            <form action="" method="post">
+                {% csrf_token %}
+              <h3 class="fw-bold my-3 text-center">فرم تماس</h3>
+              <br />
+              <div class="form-floating mb-3">
+                  {{ form.title }}
+                <label for="floatingPassword"
+                  ><span>
+                    <img
+                      src="{% static 'assets/icons/at.svg' %}"
+                      alt=""
+                      class="icon"
+                    /> </span
+                  ><span class="fs-5 fw-bold">عنوان</span></label
+                >
+              </div>
+
+              <div class="form-floating">
+                {{ form.message }}
+                <label for="message"
+                  ><span>
+                    <img
+                      src="{% static 'assets/icons/chat-text.svg' %}"
+                      alt=""
+                      class="icon"
+                    /> </span
+                  ><span class="fs-5 fw-bold">متن پیام</span></label
+                >
+              </div>
+              <!-- submit button -->
+              <div class="row align-items-center my-3">
+                <div class="col">
+                  <button
+                    class="btn btn-secondary w-100 p-3 fw-bold"
+                    type="submit"
+                    id="submit-btn"
+                  >
+                    ارسال
+                  </button>
+                </div>
+              </div>
+              <!-- submit button -->
+
+              <br />
+            </form>
+            <!-- contact form -->
+          </div>
+
+          <!-- image section -->
+          <div class="col-md-6 text-center p-3">
+            <img
+              src="{% static 'assets/images/contact-us-image.svg' %}"
+              class="img-fluid"
+              width="400"
+              alt=""
+            />
+          </div>
+          <!-- image section -->
+        </div>
+      </div>
+    </section>
+
+    <!-- bootstrap .js file -->
+    <script src="{% static 'scripts/bootstrap.js' %}"></script>
+  </body>
+</html>
