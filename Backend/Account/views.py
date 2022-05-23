@@ -16,6 +16,8 @@ from django.contrib.auth import (
 from .forms import (
     LoginForm,
     SignUpForm,
+    MyPasswordResetForm,
+    SetNewResetPasswordForm
 )
 
 
@@ -73,3 +75,20 @@ def activate(request, uidb64, token):
         return render(request, 'Account/confirm_active_email_send.html', {})
     else:
         return HttpResponse('لینک فعالسازی منقضی شده است. مجددا اقدام کنید.')
+
+
+class MyPasswordReset(auth_views.PasswordResetView):
+    email_template_name = "Account/password_reset_email.html"
+    form_class = MyPasswordResetForm
+    template_name = 'Account/password_reset_form.html'
+    success_url = reverse_lazy('account:password_reset_done')
+
+
+class MyPasswordResetDone(auth_views.PasswordResetDoneView):
+    template_name = 'Account/password_reset_done.html'
+
+
+class MyPasswordResetConfirm(auth_views.PasswordResetConfirmView):
+    form_class = SetNewResetPasswordForm
+    template_name = 'Account/password_reset_confirm.html'
+    success_url = reverse_lazy('account:login')

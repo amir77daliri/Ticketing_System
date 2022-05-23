@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
-from django.utils.text import capfirst
 from django.contrib.auth.forms import (
     AuthenticationForm,
     UserCreationForm,
@@ -113,3 +112,63 @@ class SignUpForm(UserCreationForm):
                 self.add_error('username', 'کاربری با این نام کاربری از قبل موجود است !')
 
         return self.cleaned_data
+
+
+class SetNewResetPasswordForm(forms.Form):
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super(SetNewResetPasswordForm, self).__init__(*args, **kwargs)
+
+    new_password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'password', 'id': 'password1', 'class': 'form-control'})
+    )
+    new_password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'confirm-password', 'id': 'password2', 'class': 'form-control'})
+    )
+
+    def clean_new_password2(self):
+        password1 = self.cleaned_data['new_password1']
+        password2 = self.cleaned_data['new_password2']
+        if password1 and password2:
+            if password1 != password2:
+                raise ValidationError("رمز های عبور مغایرت دارند!")
+        return password2
+
+    def save(self, commit=True):
+        password = self.cleaned_data['new_password1']
+        self.user.set_password(password)
+        if commit:
+            self.user.save()
+        return self.user
+
+
+class ChangePasswordForm(SetNewResetPasswordForm):
+    old_password = forms.CharField(
+        label="old_password",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'placeholder': 'old-password', 'autofocus': True}),
+    )
+    """
+    Validate that the old_password field is correct.
+    """
+    def clean_old_password(self):
+        """
+        Validate that the old_password field is correct.
+        """
+        old_password = self.cleaned_data["old_password"]
+        if not self.user.check_password(old_password):
+            raise ValidationError("Wrong old password- Try again")
+        return old_password
+
+
+class MyPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={'placeholder': 'Email', 'id': 'email', 'class': 'form-control'})
+    )
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if validate_email(email):
+            return email
+        raise forms.ValidationError("ایمیل وارد شده اشتباه است!")
