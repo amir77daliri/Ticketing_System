@@ -5,3 +5,7 @@
 input {
   text-align: left;
 }
+
+.right-direction {
+  text-align: right;
+}
