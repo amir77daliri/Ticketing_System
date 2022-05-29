@@ -1,0 +1,30 @@
+footer {
+  color: #ffffff;
+}
+footer p {
+  color: #e0e0e0;
+}
+footer a {
+  text-decoration: none;
+  color: #e0e0e0;
+}
+
+.icon {
+  width: 25px;
+}
+
+a {
+  text-decoration: none;
+}
+
+li span {
+  color: #ffffff;
+}
+
+.bg-color {
+  background-color: #f6f6f6;
+}
+
+#table {
+  width: 100%;
+}
