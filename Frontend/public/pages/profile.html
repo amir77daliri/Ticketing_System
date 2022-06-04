@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Required meta tags -->
+
+    <link rel="stylesheet" href="../styles/bootstrap.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <title>Dashboard | دشبورد</title>
+  </head>
+
+  <body>
+    <section class="container-fluid mb-2">
+      <div class="row flex-wrap">
+        <!-- sidebar -->
+        <aside
+          class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark dash-links"
+        >
+          <div
+            class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-70"
+          >
+            <ul
+              class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu"
+            >
+              <li>
+                <a
+                  href="#submenu1"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 align-middle"
+                >
+                  <span
+                    ><img
+                      src="../assets/icons/dashboard.png"
+                      class="icon"
+                      alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">دشبورد</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link px-0 py-5 align-middle">
+                  <span
+                    ><img src="../assets/icons/send.png" class="icon" alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">ارسال تیکت</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#submenu2"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 align-middle"
+                >
+                  <span
+                    ><img
+                      src="../assets/icons/person-white.png"
+                      class="icon"
+                      alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">پروفایل</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#submenu2"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 py-5 align-middle"
+                >
+                  <span
+                    ><img src="../assets/icons/exit.png" class="icon" alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">خروج</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <!-- sidebar -->
+
+        <div class="col">
+          <!-- welcome to user part -->
+          <div
+            class="row justify-content-between align-items-center shadow-sm bg-color px-3"
+          >
+            <!-- hi 'username' -->
+            <div class="col-auto p-4 mx-5 px-5 px-md-0 mx-md-0">
+              <span class="text-decoration-none">
+                <span
+                  ><img
+                    src="../assets/icons/person-check.svg"
+                    class="icon"
+                    alt=""
+                /></span>
+                <span class="fw-bold" id="username">اسم یوزر</span>
+                <span>خوش آمدید</span>
+              </span>
+            </div>
+            <!-- hi 'username' -->
+
+            <!-- search form -->
+            <div class="col-auto mx-md-0 px-md-0 px-5 py-md-0 py-2">
+              <form class="d-flex">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder=" جست و جوی تیکت ..."
+                  />
+                  <button type="button" class="btn btn-secondary">
+                    <span
+                      ><img
+                        src="../assets/icons/search.png"
+                        alt=""
+                        width="20px"
+                      />
+                    </span>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- search form -->
+          </div>
+          <!-- welcome to user part -->
+
+          <!-- info part -->
+          <div class="mt-3 row" style="max-width: 84.1vw">
+            <div class="col" style="height: 500px; overflow: auto">
+              <div class="row text-center py-3 fw-bold">
+                <h3 class="mt-4">اطلاعات حساب شما</h3>
+              </div>
+              <div class="row p-5">
+                <form>
+                  <div class="mb-3 row justify-content-center">
+                    <div
+                      class="text-center border border-secondary rounded shadow"
+                      style="width: 150px; height: 150px"
+                    >
+                      <img
+                        src="../assets/images/activate-account.png"
+                        style="width: 100%; height: 100%"
+                        alt=""
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label"
+                        >آپلود عکس پروفایل</label
+                      >
+                      <input class="form-control" type="file" id="formFile" />
+                    </div>
+                  </div>
+                  <br />
+                  <hr />
+                  <br />
+                  <div class="mb-3">
+                    <label for="email" class="form-label">ایمیل</label>
+                    <input type="text" class="form-control" id="email" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="username2" class="form-label">نام کاربری</label>
+                    <input type="text" class="form-control" id="username2" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">شماره تماس</label>
+                    <input type="text" class="form-control" id="phone" />
+                  </div>
+                  <br />
+                  <hr />
+                  <br />
+                  <div class="mb-3">
+                    <label for="pass-old" class="form-label"
+                      >رمز عبور فعلی</label
+                    >
+                    <input type="password" class="form-control" id="pass-old" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="pass-new" class="form-label"
+                      >رمز عبور جدید</label
+                    >
+                    <input type="password" class="form-control" id="pass-new" />
+                  </div>
+                  <div class="mb-3">
+                    <label for="pass-new-verify" class="form-label"
+                      >تایید رمز عبور جدید</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="pass-new-verify"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="mt-4 btn btn-primary w-100 btn-lg"
+                  >
+                    ذخیره تغییرات
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- info part -->
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-dark pt-4">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <!-- footer social link and title -->
+          <div class="col-md-4">
+            <h3 class="fw-bold">ایران تیکت</h3>
+            <p>ما را در شبکه های اجتماعی دنبال کنید</p>
+            <a href=""
+              ><img src="../assets/icons/instagram.png" class="icon" alt=""
+            /></a>
+            <a href=""
+              ><img src="../assets/icons/linkedin.png" class="icon" alt=""
+            /></a>
+            <a href=""
+              ><img src="../assets/icons/telegram.png" class="icon" alt=""
+            /></a>
+          </div>
+          <!-- footer social link and title -->
+
+          <!-- footer services & links -->
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-4 mt-5 mt-sm-0">
+                <h6 class="fw-bold">خدمات</h6>
+                <hr />
+                <ul class="list-unstyled">
+                  <li><a href="">ثبت تیکت</a></li>
+                  <li class="my-3"><a href="">پیگیری تیکت</a></li>
+                  <li><a href="">ارتباط با واحد فنی</a></li>
+                </ul>
+              </div>
+              <div class="col-md-4 mt-5 mt-sm-0">
+                <h6 class="fw-bold">راه ارتباطی و آدرس</h6>
+                <hr />
+                <ul class="list-unstyled">
+                  <li>
+                    <span>تلفن:</span> <span dir="ltr">021-12345678</span>
+                  </li>
+                  <li class="my-3">
+                    <span>آدرس:</span>
+                    <span>تهران ، لویزان ، ساختمان ایران تیکت</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- footer services & links -->
+
+          <!-- footer logo -->
+          <div class="col-md-2">
+            <img src="../assets/icons/logo.png" alt="" width="100%" />
+          </div>
+          <!-- footer logo -->
+        </div>
+      </div>
+    </footer>
+    <!-- footer -->
+
+    <!-- bootstrap .js file -->
+    <script src="../scripts/bootstrap.js"></script>
+    <!-- bootstrap .js file -->
+  </body>
+</html>
