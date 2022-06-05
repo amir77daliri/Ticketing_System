@@ -172,3 +172,31 @@ class MyPasswordResetForm(PasswordResetForm):
         if validate_email(email):
             return email
         raise forms.ValidationError("ایمیل وارد شده اشتباه است!")
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super(ProfileUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['email'].disabled = True
+        self.fields['username'].disabled = True
+
+    class Meta:
+        model = User
+        fields = ('profile_image', 'username', 'email', 'first_name', 'last_name', 'phone_number')
+        widgets = {'email': forms.EmailInput(attrs={'class': 'form-control', 'id': 'email'}),
+                   'username': forms.TextInput(attrs={'class': 'form-control', 'id': 'username'}),
+                   'first_name': forms.TextInput(attrs={'class': 'form-control', 'id': 'firstname'}),
+                   'last_name': forms.TextInput(attrs={'class': 'form-control', 'id': 'lastname'}),
+                   'profile_image': forms.FileInput(attrs={'class': 'form-control'}),
+                   'phone_number': forms.TextInput(attrs={'class': 'form-control', 'id': 'phone'})
+                   }
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if validate_email(email):
+            check_email_exist = User.objects.filter(email=email).exclude(email=self.user.email).exists()
+            if check_email_exist:
+                raise forms.ValidationError("این ایمیل از قبل استفاده شده است !ایمیل دیگری وارد کنید.")
+            return email
+        raise forms.ValidationError("ایمیل نامعتبر است !")
