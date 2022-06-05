@@ -20,27 +20,36 @@
 
     <!-- styles -->
 
-    <title>ریست رمز عبور | Password Reset</title>
+    <title>فعال سازی اکانت | Account activation</title>
   </head>
 
   <body>
     <div class="container mt-5">
       <div class="row">
         <div class="col-3 mx-auto">
-          <img src="{% static 'assets/images/email.png' %}" alt="" class="img-fluid" />
+          <img
+            src="{% static 'assets/images/activate-account.png' %}"
+            alt=""
+            class="img-fluid"
+          />
         </div>
       </div>
       <div class="row my-5">
         <div class="col-12">
-          <h4 class="text-center">
-            درخواست بازنشانی رمزعبور شما تایید شد، لطفا ایمیل خود را چک کنید.
-          </h4>
+          <h4 class="text-center">حساب کاربری شما با موفقیت فعال شد</h4>
         </div>
         <br /><br /><br />
         <div class="col-12">
           <h5 class="text-center text-muted">
-            در صورتی که ایمیلی برایتان ارسال نشده بود ، پوشه spam را چک کنید
+            میتوانید از این قسمت وارد سایت شوید
           </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <a href="{% url 'account:login' %}">
+              <button class="btn btn-lg btn-primary">ورود به سایت</button>
+          </a>
         </div>
       </div>
     </div>

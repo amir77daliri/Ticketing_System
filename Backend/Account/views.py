@@ -59,7 +59,7 @@ class Register(CreateView):
             mail_subject, message, to=[to_email]
         )
         email.send()
-        return render(self.request, 'Account/confirm_email_send.html', {'email': form.cleaned_data.get('email')})
+        return render(self.request, 'Account/email-sent.html', {})
 
 
 def activate(request, uidb64, token):
@@ -72,7 +72,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         # return redirect('home')
-        return render(request, 'Account/confirm_active_email_send.html', {})
+        return render(request, 'Account/activate-account-success.html', {})
     else:
         return HttpResponse('لینک فعالسازی منقضی شده است. مجددا اقدام کنید.')
 
@@ -80,7 +80,7 @@ def activate(request, uidb64, token):
 class MyPasswordReset(auth_views.PasswordResetView):
     email_template_name = "Account/password_reset_email.html"
     form_class = MyPasswordResetForm
-    template_name = 'Account/password_reset_form.html'
+    template_name = 'Account/email-sent-pass.html'
     success_url = reverse_lazy('account:password_reset_done')
 
 
