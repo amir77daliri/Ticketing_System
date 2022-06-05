@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Apps :
     'Account.apps.AccountConfig',
     'ContactUs.apps.ContactusConfig',
+    'Ticket.apps.TicketConfig',
 
     # Packages :
     'six',
