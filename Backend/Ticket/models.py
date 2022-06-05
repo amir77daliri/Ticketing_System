@@ -44,3 +44,23 @@ class Ticket(models.Model):
                 self.slug = slugify(f'ticket {self.tracking_code}')
                 super(Ticket, self).save(*args, **kwargs)
                 break
+
+
+class TicketResponse(models.Model):
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    # Related Fields :
+    user = models.ForeignKey(get_user_model(), null=True, related_name='ticket_responses', on_delete=models.SET_NULL)
+    ticket = models.ForeignKey(Ticket, related_name='responses', on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['created_at', 'id']
+        verbose_name = 'پاسخ'
+        verbose_name_plural = 'پاسخ ها'
+
+    def jcreated(self):
+        return jalali_converter(self.created_at)
+
+    def __str__(self):
+        return f"response to: {self.ticket.tracking_code}"
