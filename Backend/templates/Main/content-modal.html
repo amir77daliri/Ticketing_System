@@ -1,0 +1,44 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-message-title">عنوان پیام</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              id="close-modal-lab"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label"
+                >محتوای ارسالی</label
+              >
+              <textarea
+                class="form-control"
+                id="modal-message-text"
+                rows="10"
+                disabled
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="close-modal"
+            >
+              بستن
+            </button>
+              <a style="display: none" id="detail-link">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="reply-btn">
+                      پاسخ
+                  </button>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
