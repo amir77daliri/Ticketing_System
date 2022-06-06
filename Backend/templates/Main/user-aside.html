@@ -1,0 +1,74 @@
+{% load static %}
+<aside
+          class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark dash-links"
+        >
+          <div
+            class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-70"
+          >
+            <ul
+              class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu"
+            >
+              <li>
+                <a
+                  href="{% url 'ticket:user-profile' %}"
+                  class="nav-link px-0 align-middle"
+                >
+                  <span
+                    ><img
+                      src="{% static 'assets/icons/dashboard.png' %}"
+                      class="icon"
+                      alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">پنل کاربری</span>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'ticket:sign-ticket' %}" class="nav-link px-0 py-5 align-middle">
+                  <span
+                    ><img src="{% static 'assets/icons/send.png' %}" class="icon" alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">ارسال تیکت</span></a
+                >
+              </li>
+                <li>
+                <a
+                  href="{% url 'account:profile-info' %}"
+                  class="nav-link px-0 align-middle"
+                >
+                  <span
+                    ><img
+                      src="{% static 'assets/icons/person-white.png' %}"
+                      class="icon"
+                      alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">پروفایل</span></a
+                >
+              </li>
+                <li>
+                <a
+                  href="{% url 'account:password_change' %}"
+                  class="nav-link px-0 py-5 align-middle"
+                >
+                  <span
+                    ><img
+                      src="{% static 'assets/icons/shield-lock-white.svg' %}"
+                      class="icon"
+                      alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">تغییر رمز عبور</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'account:logout' %}"
+                  class="nav-link px-0 align-middle"
+                >
+                  <span
+                    ><img src="{% static 'assets/icons/exit.png' %}" class="icon" alt=""
+                  /></span>
+                  <span class="ms-1 d-none d-sm-inline">خروج</span></a>
+              </li>
+            </ul>
+          </div>
+        </aside>
