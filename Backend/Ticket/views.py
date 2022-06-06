@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, Http404
 from django.views.generic import ListView, CreateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import AdminAccessMixin
+from .models import Ticket, TicketResponse
+from django.urls import reverse_lazy
 
 
 class AdminProfile(LoginRequiredMixin, AdminAccessMixin, ListView):
