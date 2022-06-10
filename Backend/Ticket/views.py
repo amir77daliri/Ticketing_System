@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, Http404
+from django.shortcuts import render, redirect, Http404, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView, CreateView, DetailView
@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import AdminAccessMixin
 from .models import Ticket, TicketResponse
 from django.urls import reverse_lazy
+from .forms import SignTicketForm, TicketResponseForm
 
 
 class AdminProfile(LoginRequiredMixin, AdminAccessMixin, ListView):
@@ -59,3 +60,20 @@ def show_ticket_content(request):
         return JsonResponse({'data': data})
     except:
         return JsonResponse({'error': 'not found'})
+
+
+class TicketDetail(LoginRequiredMixin, DetailView):
+    model = Ticket
+    template_name = 'Ticket/ticket-detail.html'
+    context_object_name = 'ticket'
+
+    def get_object(self, queryset=None):
+        slug = self.kwargs.get('slug')
+        self.ticket = get_object_or_404(Ticket, slug=slug)
+        return self.ticket
+
+    def get_context_data(self, **kwargs):
+        context = super(TicketDetail, self).get_context_data(**kwargs)
+        context['responses'] = self.ticket.responses.all()
+        context['form'] = TicketResponseForm
+        return context

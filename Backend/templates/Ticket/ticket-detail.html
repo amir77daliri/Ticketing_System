@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- meta tags -->
+
+    <!-- styles -->
+
+    <!-- bootstrap .css file -->
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}" />
+    <!-- bootstrap .css file -->
+
+    <!-- custom .css files -->
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}" />
+    <!-- custom .css files -->
+
+    <!-- styles -->
+
+    <title>لیست تیکت ها | Tickets List</title>
+  </head>
+
+  <body>
+    <header>
+        {% include 'Main/navbar.html' %}
+    </header>
+    <section class="container p-5">
+      <h3 class="text-center">اطلاعات تیکت</h3>
+      <br />
+
+      <div class="row justify-content-around p-3" id="user-message">
+        <div class="col-12 bg-light p-3">
+          {% if request.user.is_admin %}
+              <p>
+            <span><img src="{% static 'assets/icons/send.svg' %}" alt="" /></span>
+            <span>فرستنده : </span><span>{{ ticket.user }}</span>
+          </p>
+          {% endif %}
+          <p>
+            <span><img src="{% static 'assets/icons/collection.svg' %}" alt="" /></span>
+            <span>وضعیت : </span>
+              <span>
+                  {% if ticket.status == 'P' %}
+                  در انتظار پاسخ
+                  {% elif ticket.status == 'A' %}
+                  پاسخ داده شده
+                  {% elif not ticket.is_open %}
+                  خاتمه یافته
+                  {% endif %}
+              </span>
+          </p>
+          <p>
+            <span><img src="{% static 'assets/icons/calendar.svg' %}" alt="" /></span>
+            <span>تاریخ : </span><span>{{ ticket.jpublish }}</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row justify-content-around p-3" id="user-message">
+        <div class="col-12 bg-primary p-3 rounded-top text-white">
+          <span> #1 </span><span>عنوان پیام : </span><span>{{ ticket.title }}</span>
+        </div>
+        <div class="col-12 bg-light p-2">
+          <p class="py-2" style="padding: 2px 3px;">{{ ticket.content }}</p>
+        </div>
+      </div>
+
+        {% if ticket.responses.exists %}
+            {% for response in responses %}
+                <div class="row justify-content-around p-3" id="admin-message">
+                    <div class="col-12 bg-success p-3 text-white rounded-bottom"><span>پاسخ توسط </span><span class="fw-bold">{{ response.user }}</span>
+                        <span>در تاریخ </span><span class="fw-bold">{{ response.jcreated }}</span>
+                    </div>
+                    <div class="col-12 bg-light p-2">
+                        <p class="py-2">{{ response.content }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            {% if request.user.is_admin %}
+                <span id="sign-response">
+                    <button class="btn btn-primary response-btn" style="cursor: unset;" id="sign-response">
+                        ارسال پاسخ
+                    </button>
+                </span>
+                <form method="post" style="display: none" id="send-form" action="{% url 'ticket:send-response' ticket.slug %}">
+                    {% csrf_token %}
+                    <div class="form-floating" style="margin-top: 12px;">
+                        {{ form.response }}
+                        <label for="message">
+                            <span><img src="{% static 'assets/icons/chat-text.svg' %}" alt="" class="icon"/>
+                            </span>
+                            <span class="fs-5 fw-bold"></span>
+                        </label>
+                        <!-- submit button -->
+                        <div class="row align-items-center my-3">
+                            <div class="col-3">
+                                <button class="btn btn-secondary w-100 p-3 fw-bold" type="submit" id="submit-btn">ارسال</button>
+                            </div>
+                        </div>
+                        <!-- submit button -->
+                    </div>
+                </form>
+
+            {% endif %}
+        {% endif %}
+
+
+    </section>
+
+    <!-- bootsrap .js file -->
+    <script src="{% static 'scripts/bootstrap.js' %}"></script>
+    <!-- bootsrap .js file -->
+
+    <script>
+        let signResponseBtn = document.querySelector('#sign-response')
+        let form = document.querySelector('#send-form')
+        signResponseBtn.addEventListener('click', e => {
+            form.style.display = 'block';
+        })
+    </script>
+  </body>
+</html>
+
