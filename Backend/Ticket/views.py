@@ -77,3 +77,14 @@ class TicketDetail(LoginRequiredMixin, DetailView):
         context['responses'] = self.ticket.responses.all()
         context['form'] = TicketResponseForm
         return context
+
+
+class SignTicket(LoginRequiredMixin, CreateView):
+    form_class = SignTicketForm
+    template_name = 'Ticket/sign-ticket.html'
+
+    def form_valid(self, form):
+        ticket = form.save(commit=False)
+        ticket.user = self.request.user
+        ticket.save()
+        return redirect(reverse_lazy('ticket:user-profile'))
