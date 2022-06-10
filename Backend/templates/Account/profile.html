@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Required meta tags -->
+
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/dashboard.css' %}" />
+    <title>Dashboard | دشبورد</title>
+  </head>
+
+  <body>
+    <section class="container-fluid mb-2">
+      <div class="row flex-wrap">
+        <!-- sidebar -->
+        {% if request.user.is_admin %}
+            {% include 'Main/admin-aside.html' %}
+        {% else %}
+            {% include 'Main/user-aside.html' %}
+        {% endif %}
+        <!-- sidebar -->
+
+        <div class="col">
+          <!-- welcome to user part -->
+          <div
+            class="row justify-content-between align-items-center shadow-sm bg-color px-3"
+          >
+            <!-- hi 'username' -->
+            <div class="col-auto p-4 mx-5 px-5 px-md-0 mx-md-0">
+              <span class="text-decoration-none">
+                <span
+                  ><img
+                    src="{% static 'assets/icons/person-check.svg' %}"
+                    class="icon"
+                    alt=""
+                /></span>
+                <span class="fw-bold" id="username">{{ request.user }}</span>
+                <span>خوش آمدید</span>
+              </span>
+            </div>
+            <!-- hi 'username' -->
+
+            <!-- search form -->
+            <div class="col-3">
+                {% include 'Main/search-form.html' %}
+            </div>
+            <!-- search form -->
+          </div>
+          <!-- welcome to user part -->
+
+          <!-- info part -->
+          <div class="mt-3 row" style="max-width: 84.1vw">
+            <div class="col" style="height: 500px; overflow: auto">
+              <div class="row text-center py-3 fw-bold">
+                <h3 class="mt-4">اطلاعات حساب شما</h3>
+              </div>
+              <div class="row p-5">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                  <div class="mb-3 row justify-content-center">
+                    <div
+                      class="text-center border border-secondary rounded shadow"
+                      style="width: 150px; height: 150px"
+                    >
+                      {% if request.user.profile_image %}
+                        <img src="{{ request.user.profile_image.url }}" style="width: 100%; height: 100%" alt="" class="p-3"/>
+                      {% else %}
+                          <img src="{% static 'assets/images/def.Png' %}" style="width: 100%; height: 100%" alt="" class="p-3"/>
+                      {% endif %}
+                    </div>
+
+                    <div class="mb-3 mt-4">
+                      <label for="formFile" class="form-label"
+                        >آپلود عکس پروفایل</label
+                      >
+                      {{ form.profile_image }}
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">ایمیل</label>
+                    {{ form.email }}
+                  </div>
+                  <div class="mb-3">
+                    <label for="username2" class="form-label">نام کاربری</label>
+                    {{ form.username }}
+                  </div>
+                    <div class="mb-3">
+                    <label for="firstname" class="form-label">نام</label>
+                    {{ form.first_name }}
+                  </div>
+                    <div class="mb-3">
+                    <label for="lastname" class="form-label">نام خانوادگی</label>
+                    {{ form.last_name }}
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">شماره تماس</label>
+                    {{ form.phone_number }}
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="mt-4 btn btn-primary w-100 btn-lg"
+                  >
+                    ذخیره تغییرات
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- info part -->
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    {% include 'Main/footer.html' %}
+    <!-- footer -->
+
+    <!-- bootstrap .js file -->
+    <script src="{% static 'scripts/bootstrap.js' %}"></script>
+    <!-- bootstrap .js file -->
+  </body>
+</html>

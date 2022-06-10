@@ -1,0 +1,12 @@
+{% load static %}
+<form class="d-flex" method="post" action="{% url 'ticket:search' %}">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" id="code" name="code" class="form-control" placeholder="پیگیری تیکت..."/>
+        <button type="submit" class="btn btn-secondary">
+            <span>
+                <img src="{% static 'assets/icons/search.png' %}" alt="" width="20px"/>
+            </span>
+        </button>
+    </div>
+</form>
