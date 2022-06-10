@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, Http404
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 from django.views.generic import ListView, CreateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import AdminAccessMixin
@@ -42,3 +44,18 @@ class UserProfile(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Ticket.objects.filter(user=self.request.user)
 
+
+@require_POST
+def show_ticket_content(request):
+    ticket_id = request.POST.get('id')
+    try:
+        ticket = Ticket.objects.get(id=ticket_id)
+        data = {
+            'title': ticket.title,
+            'status': ticket.status,
+            'slug': ticket.slug,
+            'content': ticket.content,
+        }
+        return JsonResponse({'data': data})
+    except:
+        return JsonResponse({'error': 'not found'})

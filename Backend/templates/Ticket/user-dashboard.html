@@ -142,7 +142,32 @@
     <!-- bootstrap .js file -->
 
     <!-- custom js file -->
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'scripts/ajaxSetup.js' %}"></script>
+    <script>
+        let btns = document.querySelectorAll('.show-message-btn')
+        btns.forEach( btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault()
+                let ticket_id = btn.getAttribute('data-id')
+                $.post('{% url "ticket:ticket_content" %}', {
+                    id: ticket_id
+                },function (data){
+                    document.querySelector('#modal-message-text').innerHTML = data.data.content
+                    $('#exampleModal').addClass('show')
+                    $('#exampleModal').css('display','block')
+                    $('#close-modal').click ( e => {
+                        $('#exampleModal').removeClass('show')
+                        $('#exampleModal').css('display','none')
+                    })
+                    $('#close-modal-lab').click( e => {
+                        $('#exampleModal').removeClass('show')
+                        $('#exampleModal').css('display','none')
+                    })
+                })
+            })
+        })
+    </script>
     <!-- custom js file -->
   </body>
 </html>
