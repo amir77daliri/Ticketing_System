@@ -5,6 +5,7 @@ from .views import (
 	show_ticket_content,
 	TicketDetail,
 	SignTicket,
+	sign_response,
 )
 
 app_name = 'ticket'
@@ -14,5 +15,6 @@ urlpatterns = [
 	path('get_ticket_content/', show_ticket_content, name='ticket_content'),
         path('sign-ticket/', SignTicket.as_view(), name='sign-ticket'),
 	path('<slug:slug>/', TicketDetail.as_view(), name='ticket-detail'),
+	path('send-response/<slug:slug>', sign_response, name='send-response'),
 ]
 

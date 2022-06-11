@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, Http404, get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .mixins import AdminAccessMixin
@@ -88,3 +89,15 @@ class SignTicket(LoginRequiredMixin, CreateView):
         ticket.user = self.request.user
         ticket.save()
         return redirect(reverse_lazy('ticket:user-profile'))
+
+
+@login_required
+@require_POST
+def sign_response(request, slug):
+    ticket = get_object_or_404(Ticket, slug=slug)
+    message = request.POST.get('response')
+    TicketResponse.objects.create(content=message, user=request.user, ticket=ticket)
+    ticket.is_open = False
+    ticket.status = 'A'
+    ticket.save()
+    return redirect(reverse_lazy('ticket:admin-profile'))
