@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- meta tags -->
+
+    <!-- styles -->
+
+    <!-- bootstrap .css file -->
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}" />
+    <!-- bootstrap .css file -->
+
+    <!-- custom .css files -->
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+    <!-- custom .css files -->
+
+    <!-- styles -->
+
+    <title>IranTicket | ایران تیکت</title>
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+       {% include 'Main/navbar.html' %}
+    </header>
+    <!-- header -->
+
+    <!-- ticket finding section -->
+    <section>
+        <div class="container mt-5">
+            <div class="row align-items-center justify-content-evenly">
+                <!-- ticket info part -->
+                <div class="col mt-5 my-5" id="ticket-info-part">
+                    <div class="row rounded bg-light p-4 align-items-center">
+                        <div class="col">
+                            <h3 class="fw-bold text-center text-danger">تیکت با کد رهگیری {{ code }} پیدا نشد</h3>
+                        </div>
+                        <div class="col">
+                            <img src="{% static 'assets/images/not-found.png' %}" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <!-- ticket info part -->
+            </div>
+        </div>
+    </section>
+    <!-- ticket finding section -->
+
+    <br />
+    <br />
+
+    <!-- footer -->
+    {% include 'Main/footer.html' %}
+    <!-- footer -->
+
+    <!-- bootsrap .js file -->
+    <script src="{% static 'scripts/bootstrap.js' %}"></script>
+    <!-- bootsrap .js file -->
+  </body>
+</html>
+

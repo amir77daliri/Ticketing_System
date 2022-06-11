@@ -101,3 +101,20 @@ def sign_response(request, slug):
     ticket.status = 'A'
     ticket.save()
     return redirect(reverse_lazy('ticket:admin-profile'))
+
+
+@login_required(login_url=reverse_lazy('ticket:user-profile'))
+def search(request):
+    if request.user.is_authenticated:
+        tracking_code = request.POST.get('code')
+        try:
+            if request.user.is_admin:
+                ticket = Ticket.objects.get(tracking_code=tracking_code)
+                return render(request, 'Ticket/success-ticket-search.html', {'ticket': ticket})
+            else:
+                ticket = Ticket.objects.get(tracking_code=tracking_code, user=request.user)
+                return render(request, 'Ticket/success-ticket-search.html', {'ticket': ticket})
+        except:
+            return render(request, 'Ticket/unsuccessful-ticket-search.html', {'code': tracking_code})
+    else:
+        return redirect(reverse_lazy('account:login'))

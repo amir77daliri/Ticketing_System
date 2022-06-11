@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- meta tags -->
+
+    <!-- styles -->
+
+    <!-- bootstrap .css file -->
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}" />
+    <!-- bootstrap .css file -->
+
+    <!-- custom .css files -->
+    <link rel="stylesheet" href="{% static 'styles/fonts.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+    <!-- custom .css files -->
+
+    <!-- styles -->
+
+    <title>IranTicket | ایران تیکت</title>
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+      {% include 'Main/navbar.html' %}
+    </header>
+    <!-- header -->
+
+    <!-- ticket finding section -->
+    <section>
+        <div class="container mt-5">
+            <div class="row align-items-center justify-content-evenly">
+                <!-- ticket info part -->
+                <div class="col mt-5 my-5" id="ticket-info-part">
+                    <div class="row rounded bg-light p-4">
+                        <a href="{% url 'ticket:ticket-detail' ticket.slug %}">
+                            <h3 class="fw-bold text-center text-primary">تیکت با کد رهگیری {{ ticket.tracking_code }} پیدا شد</h3>
+                        </a>
+                        <hr>
+                        <p class="text-center"> <span class="fw-bold">وضعیت</span> : <br><br><span>
+                            {% if ticket.status == 'P'%} در حال بررسی
+                            {% else %} پاسخ داده شده
+                            {% endif %}
+                        </span></p>
+                        <hr>
+                        <p class="text-center"> <span class="fw-bold">عنوان : </span> <br><br><span>{{ ticket.title|truncatewords:10 }}</span></p>
+                        <hr>
+                        <p class="text-center"> <span class="fw-bold">محتوای پیام :</span> <br><br><span>{{ ticket.content|truncatewords:20 }}</span></p><hr>
+                        <p class="text-center"> <span class="fw-bold">تاریخ :</span> <br><br><span>{{ ticket.jpublish }}</span></p>
+                    </div>
+                </div>
+                <!-- ticket info part -->
+            </div>
+        </div>
+    </section>
+    <!-- ticket finding section -->
+
+    <br />
+    <br />
+
+    <!-- footer -->
+    {% include 'Main/footer.html' %}
+    <!-- footer -->
+
+    <!-- bootsrap .js file -->
+    <script src="{% static 'scripts/bootstrap.js' %}"></script>
+    <!-- bootsrap .js file -->
+
+  </body>
+</html>
+

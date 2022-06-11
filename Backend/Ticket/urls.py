@@ -6,6 +6,7 @@ from .views import (
 	TicketDetail,
 	SignTicket,
 	sign_response,
+        search
 )
 
 app_name = 'ticket'
@@ -14,7 +15,8 @@ urlpatterns = [
 	path('user_profile/', UserProfile.as_view(), name='user-profile'),
 	path('get_ticket_content/', show_ticket_content, name='ticket_content'),
         path('sign-ticket/', SignTicket.as_view(), name='sign-ticket'),
-	path('<slug:slug>/', TicketDetail.as_view(), name='ticket-detail'),
+	path('search-ticket/', search, name='search'),
 	path('send-response/<slug:slug>', sign_response, name='send-response'),
+	path('<slug:slug>/', TicketDetail.as_view(), name='ticket-detail')
 ]
 
