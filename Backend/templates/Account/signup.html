@@ -19,12 +19,22 @@
     <!-- custom .css files -->
 
     <!-- styles -->
-
+      <style>
+          input[type="text"]:-ms-input-placeholder {
+              text-align: right;
+          }
+          input[type="text"]::-webkit-input-placeholder {
+              text-align: right;
+          }
+      </style>
     <title>Signup | ثبت نام</title>
   </head>
 
   <body class="bg bg-signup">
     <!-- singup section -->
+    <header>
+        {% include 'Main/navbar.html' %}
+    </header>
     <section class="mx-4 my-4">
       <div
         class="container bg-light form-login-signup border border-5 rounded"

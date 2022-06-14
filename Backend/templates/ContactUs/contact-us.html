@@ -20,16 +20,31 @@
     <link rel="stylesheet" href="{% static 'styles/fonts.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/contact-us.css' %}" />
     <!-- custom .css files -->
-
+    <link rel="stylesheet" href="{% static 'styles/messages.css' %}">
     <!-- styles -->
       <style>
-          .direct{
-              direction: rtl;
+          input[type="text"]:-ms-input-placeholder {
+              text-align: right;
+          }
+          input[type="text"]::-webkit-input-placeholder {
+              text-align: right;
           }
       </style>
   </head>
-
   <body class="bg bg-login">
+    <header>
+        {% include 'Main/navbar.html' %}
+    </header>
+    {% if  messages %}
+        <ul class="messages">
+            {% for msg in messages %}
+                <li class="{{ msg.tags }}">
+                    {{ msg|safe }}
+                <a href="{% url 'Contact:contact-us' %}" class="close">x</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <section class="mx-3 my-5">
       <div class="container form-login-signup bg-light border border-5 rounded">
         <!-- contact ways -->

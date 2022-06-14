@@ -26,18 +26,11 @@
 
         <div class="col">
           <!-- welcome to user part -->
-          <div
-            class="row justify-content-between align-items-center shadow-sm bg-color px-3"
-          >
+          <div class="row justify-content-between align-items-center shadow-sm bg-color px-3">
             <!-- hi 'username' -->
-            <div class="col-auto p-4 mx-5 px-5 px-md-0 mx-md-0">
+            <div class="col-auto p-4 mx-0 px-5 px-md-0 mx-md-0">
               <span class="text-decoration-none">
-                <span
-                  ><img
-                    src="{% static 'assets/icons/person-check.svg' %}"
-                    class="icon"
-                    alt=""
-                /></span>
+                <span><img src="{% static 'assets/icons/person-check.svg' %}" class="icon" alt=""></span>
                 <span class="fw-bold" id="username">{{ request.user }}</span>
                 <span>خوش آمدید</span>
               </span>
@@ -45,9 +38,7 @@
             <!-- hi 'username' -->
 
             <!-- search form -->
-            <div class="col-3">
                 {% include 'Main/search-form.html' %}
-            </div>
             <!-- search form -->
           </div>
           <!-- welcome to user part -->

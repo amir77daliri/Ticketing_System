@@ -26,9 +26,9 @@
                 <h6 class="fw-bold">خدمات</h6>
                 <hr />
                 <ul class="list-unstyled">
-                  <li><a href="">ثبت تیکت</a></li>
-                  <li class="my-3"><a href="">پیگیری تیکت</a></li>
-                  <li><a href="">ارتباط با واحد فنی</a></li>
+                  <li><a href="{% url 'ticket:sign-ticket' %}">ثبت تیکت</a></li>
+                  <li class="my-3"><a href="{% url 'ticket:user-profile' %}">پیگیری تیکت</a></li>
+                  <li><a href="{% url 'Contact:contact-us' %}">ارتباط با واحد فنی</a></li>
                 </ul>
               </div>
               <div class="col-md-4 mt-5 mt-sm-0">

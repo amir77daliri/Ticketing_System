@@ -14,13 +14,13 @@ class AdminProfile(LoginRequiredMixin, AdminAccessMixin, ListView):
     queryset = Ticket.objects.all()
     template_name = 'Ticket/admin-dashboard.html'
     context_object_name = 'tickets'
-    paginate_by = 2
+    paginate_by = 10
 
 
 class UserProfile(LoginRequiredMixin, ListView):
     template_name = 'Ticket/user-dashboard.html'
     context_object_name = 'tickets'
-    paginate_by = 2
+    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         if request.user.is_admin:

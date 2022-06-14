@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from extensions.utils import jalali_converter
 
 
 class ContactUs(models.Model):
@@ -15,6 +16,9 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return self.title
+
+    def jdate(self):
+        return jalali_converter(self.created_at)
 
     class Meta:
         ordering = ['-created_at']

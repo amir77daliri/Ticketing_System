@@ -43,7 +43,7 @@
             <span>وضعیت : </span>
               <span>
                   {% if ticket.status == 'P' %}
-                  در انتظار پاسخ
+                  در انتظار بررسی
                   {% elif ticket.status == 'A' %}
                   پاسخ داده شده
                   {% elif not ticket.is_open %}
@@ -97,7 +97,7 @@
                         <!-- submit button -->
                         <div class="row align-items-center my-3">
                             <div class="col-3">
-                                <button class="btn btn-secondary w-100 p-3 fw-bold" type="submit" id="submit-btn">ارسال</button>
+                                <button class="btn btn-secondary fw-bold" type="submit" id="submit-btn">ارسال</button>
                             </div>
                         </div>
                         <!-- submit button -->
@@ -123,4 +123,3 @@
     </script>
   </body>
 </html>
-

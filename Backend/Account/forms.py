@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import (
     AuthenticationForm,
@@ -33,7 +33,7 @@ def validate_phone(number):
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': 'email', 'id': 'email', 'class': 'form-control'})
+        widget=forms.TextInput(attrs={'placeholder': 'email', 'id': 'email', 'class': 'form-control back'})
     )
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'placeholder': 'password', 'id': 'password', 'class': 'form-control'})
@@ -120,10 +120,10 @@ class SetNewResetPasswordForm(forms.Form):
         super(SetNewResetPasswordForm, self).__init__(*args, **kwargs)
 
     new_password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'password', 'id': 'password1', 'class': 'form-control'})
+        widget=forms.PasswordInput(attrs={'id': 'password1', 'class': 'form-control'})
     )
     new_password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'confirm-password', 'id': 'password2', 'class': 'form-control'})
+        widget=forms.PasswordInput(attrs={'id': 'password2', 'class': 'form-control'})
     )
 
     def clean_new_password2(self):
@@ -144,21 +144,25 @@ class SetNewResetPasswordForm(forms.Form):
 
 class ChangePasswordForm(SetNewResetPasswordForm):
     old_password = forms.CharField(
-        label="old_password",
         strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'placeholder': 'old-password', 'autofocus': True}),
+        widget=forms.PasswordInput(attrs={'id': 'pass-old', 'autocomplete': 'current-password', 'autofocus': True, 'class': 'form-control'}),
     )
-    """
-    Validate that the old_password field is correct.
-    """
+
     def clean_old_password(self):
         """
         Validate that the old_password field is correct.
         """
         old_password = self.cleaned_data["old_password"]
         if not self.user.check_password(old_password):
-            raise ValidationError("Wrong old password- Try again")
+            raise ValidationError("رمز عبور قبلی اشتباه است !")
         return old_password
+
+    def clean(self):
+        old_pass = self.cleaned_data.get('old_password')
+        new_pass = self.cleaned_data.get('new_password2')
+        if new_pass == old_pass:
+            self.add_error('new_password2', 'رمز عبور جدید نباید با رمز قبلی برابر باشد!')
+        return self.cleaned_data
 
 
 class MyPasswordResetForm(PasswordResetForm):
